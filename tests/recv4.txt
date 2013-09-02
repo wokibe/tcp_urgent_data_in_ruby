@@ -1,0 +1,58 @@
+Client:
+iMac$ ruby urg_send.rb
+OOB Character: "!"
+connected to 127.0.0.1:4321
+sending 2 bytes of normal data: aa
+sending 2 bytes of normal data: ab
+sending 2 bytes of normal data: ac
+sending 2 bytes of normal data: ad
+sending 2 bytes of normal data: ae
+sending 2 bytes of normal data: af
+sending 2 bytes of normal data: ag
+^Csending 1 byte of OOB data: "!"
+sending 2 bytes of normal data: ah
+sending 2 bytes of normal data: ai
+sending 2 bytes of normal data: aj
+sending 2 bytes of normal data: ak
+sending 2 bytes of normal data: al
+sending 2 bytes of normal data: am
+sending 2 bytes of normal data: an
+sending 2 bytes of normal data: ao
+sending 2 bytes of normal data: ap
+^Csending 1 byte of OOB data: "!"
+sending 2 bytes of normal data: aq
+sending 2 bytes of normal data: ar
+sending 2 bytes of normal data: as
+sending 2 bytes of normal data: at
+sending 2 bytes of normal data: au
+sending 2 bytes of normal data: av
+sending 2 bytes of normal data: aw
+sending 2 bytes of normal data: ax
+sending 2 bytes of normal data: ay
+^Csending 1 byte of OOB data: "!"
+sending 2 bytes of normal data: az
+
+Server:
+iMac$ ruby urg_recv4.rb 
+waiting for connection on port 4321
+yielded line: aa
+yielded line: ab
+yielded line: ac
+UrgentData::OOB - seen 3 lines
+
+
+yielded line: ah
+yielded line: ai
+yielded line: aj
+UrgentData::OOB - seen 3 lines
+
+
+yielded line: aq
+yielded line: ar
+yielded line: as
+UrgentData::OOB - seen 3 lines
+
+
+yielded line: az
+UrgentData::EOF - seen 1 lines
+

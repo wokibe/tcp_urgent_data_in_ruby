@@ -1,0 +1,55 @@
+Client:
+iMac$ ruby urg_send.rb
+OOB Character: "!"
+connected to 127.0.0.1:4321
+sending 2 bytes of normal data: aa
+sending 2 bytes of normal data: ab
+sending 2 bytes of normal data: ac
+sending 2 bytes of normal data: ad
+sending 2 bytes of normal data: ae
+sending 2 bytes of normal data: af
+sending 2 bytes of normal data: ag
+^Csending 1 byte of OOB data: "!"
+sending 2 bytes of normal data: ah
+sending 2 bytes of normal data: ai
+sending 2 bytes of normal data: aj
+sending 2 bytes of normal data: ak
+sending 2 bytes of normal data: al
+sending 2 bytes of normal data: am
+sending 2 bytes of normal data: an
+^Csending 1 byte of OOB data: "!"
+sending 2 bytes of normal data: ao
+sending 2 bytes of normal data: ap
+sending 2 bytes of normal data: aq
+sending 2 bytes of normal data: ar
+sending 2 bytes of normal data: as
+sending 2 bytes of normal data: at
+sending 2 bytes of normal data: au
+
+Server:
+iMac$ ruby urg_recv2.rb 
+waiting for connections on port 4321
+incoming connection from 127.0.0.1:51407
+got 2 bytes of normal data: aa
+got 2 bytes of normal data: ab
+got 2 bytes of normal data: ac
+got 2 bytes of normal data: ad
+got 2 bytes of normal data: ae
+got 2 bytes of normal data: af
+expected recv() error: #<Errno::EINVAL: Invalid argument - recvfrom(2)>
+got 2 bytes of normal data: ag
+got 3 bytes of normal data: !ah
+got 2 bytes of normal data: ai
+got 2 bytes of normal data: aj
+got 2 bytes of normal data: ak
+got 2 bytes of normal data: al
+got 2 bytes of normal data: am
+expected recv() error: #<Errno::EINVAL: Invalid argument - recvfrom(2)>
+got 2 bytes of normal data: an
+got 3 bytes of normal data: !ao
+got 2 bytes of normal data: ap
+got 2 bytes of normal data: aq
+got 2 bytes of normal data: ar
+got 2 bytes of normal data: as
+got 2 bytes of normal data: at
+got 2 bytes of normal data: au
