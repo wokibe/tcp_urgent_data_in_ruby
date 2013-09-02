@@ -36,7 +36,7 @@ signal does the actual urgent send.
       require 'socket'
 
       host = 'localhost'
-      port = 4481
+      port = 4321
       oob_char = '!'
     
       socket = Socket.tcp(host, port)
@@ -85,7 +85,7 @@ Our first variant of a receiver server uses the URG signal:
       require 'socket'
 
       F_SETOWN = 6    # set manual as not defined in Fcntl
-      port = 4481
+      port = 4321
 
       Socket.tcp_server_loop(port) do |socket|
         trap(:URG) do
@@ -114,7 +114,7 @@ Here the essential parts of the log of executing this client/server pair:
 
     Server:
     iMac$ ruby urg_recv1.rb 
-    waiting for connections on port 4481
+    waiting for connections on port 4321
     incoming connection from 127.0.0.1:51393
     ...
     got 2 bytes of normal data: ag
@@ -144,7 +144,7 @@ Our second variant of a receiver server uses the SO_OOBINLINE option:
       require 'socket'
 
       F_SETOWN = 6
-      port = 4481
+      port = 4321
 
       Socket.tcp_server_loop(port) do |socket|
 
@@ -171,7 +171,7 @@ Here the essential parts of the log of executing this client/server pair:
       Client:
       iMac$ ruby urg_send.rb
       OOB Character: "!"
-      connected to 127.0.0.1:4481
+      connected to 127.0.0.1:4321
       ...
       sending 2 bytes of normal data: af
       sending 2 bytes of normal data: ag
@@ -182,7 +182,7 @@ Here the essential parts of the log of executing this client/server pair:
 
       Server:
       iMac$ ruby urg_recv2.rb 
-      waiting for connections on port 4481
+      waiting for connections on port 4321
       incoming connection from 127.0.0.1:51407
       ...
       got 2 bytes of normal data: af
@@ -211,7 +211,7 @@ Our third variant of a receiver server uses select():
 
       require 'socket'
 
-      port = 4481
+      port = 4321
       Socket.tcp_server_loop(port) do |socket|
         ok_to_read_oob = true         # flag to avoid recv() error EINVAL
         sock_arr = [socket]
@@ -250,7 +250,7 @@ Here the essential parts of the log of executing this client/server pair:
       Client:
       iMac$ ruby urg_send.rb
       OOB Character: "!"
-      connected to 127.0.0.1:4481
+      connected to 127.0.0.1:4321
       ...
       sending 2 bytes of normal data: ah
       sending 2 bytes of normal data: ai
@@ -261,7 +261,7 @@ Here the essential parts of the log of executing this client/server pair:
 
       Server:
       iMac$ ruby urg_recv3.rb 
-      waiting for connections on port 4481
+      waiting for connections on port 4321
       incoming connection from 127.0.0.1:51415
       ...
       got 2 bytes of normal data: ah
@@ -451,7 +451,7 @@ a forked environment:
       require 'socket'
       require_relative 'urgent_data/urgent_data'
 
-      port = 4481
+      port = 4321
 
       server_socket = TCPServer.new(port)
 
@@ -485,7 +485,7 @@ Here the essential parts of the log of executing this client/server pair:
       Client:
       iMac$ ruby urg_send.rb
       OOB Character: "!"
-      connected to 127.0.0.1:4481
+      connected to 127.0.0.1:4321
       sending 2 bytes of normal data: aa
       sending 2 bytes of normal data: ab
       sending 2 bytes of normal data: ac
@@ -500,7 +500,7 @@ Here the essential parts of the log of executing this client/server pair:
 
       Server:
       iMac$ ruby urg_recv4.rb 
-      waiting for connection on port 4481
+      waiting for connection on port 4321
       yielded line: aa
       yielded line: ab
       yielded line: ac
